@@ -9,6 +9,10 @@ public class UserPrincipal implements UserDetails {
 
     private UserEntity userEntity;
 
+    public UserPrincipal creatUserPrincipal(UserEntity userEntity){
+        return new UserPrincipal(userEntity);
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         // TODO Auto-generated method stub
