@@ -16,6 +16,7 @@ import { VenueComponent } from './view/venue/venue.component';
 import { ChatComponent } from './view/chat/chat.component';
 import { PagenotfoundComponent } from './layout/pagenotfound/pagenotfound.component';
 import { CreateComponent } from './view/create/create.component';
+import { ChatroomComponent } from './global/chatroom/chatroom.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { CreateComponent } from './view/create/create.component';
     ChatComponent,
     PagenotfoundComponent,
     CreateComponent,
+    ChatroomComponent,
   ],
   imports: [
     BrowserModule,
