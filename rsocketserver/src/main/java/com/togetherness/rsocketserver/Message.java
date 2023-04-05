@@ -1,22 +1,18 @@
 package com.togetherness.rsocketserver;
 
-import java.time.Instant;
-
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collation = "messages")
 public class Message {
-    private String id;
+    private String id = "asdf";
     private String body;
-    private Instant sentAt;
 
     /**
      * @param body
      * @param sentAt
      */
-    public Message(String body, Instant sentAt) {
+    public Message(String body) {
         this.body = body;
-        this.sentAt = sentAt;
     }
 
     /**
@@ -45,20 +41,6 @@ public class Message {
      */
     public void setBody(String body) {
         this.body = body;
-    }
-
-    /**
-     * @return the sentAt
-     */
-    public Instant getSentAt() {
-        return sentAt;
-    }
-
-    /**
-     * @param sentAt the sentAt to set
-     */
-    public void setSentAt(Instant sentAt) {
-        this.sentAt = sentAt;
     }
 
 }

@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { WebsocketClientTransport } from 'rsocket-websocket-client';
 import { Observable, Subject } from 'rxjs';
-import { webSocket } from 'rxjs/webSocket';
+import { WebSocketSubject, webSocket } from 'rxjs/webSocket';
 
 @Component({
   selector: 'app-chatroom',
@@ -8,8 +9,7 @@ import { webSocket } from 'rxjs/webSocket';
   styleUrls: ['./chatroom.component.css'],
 })
 export class ChatroomComponent implements OnInit {
-  subject: any | undefined;
-
+  subject: any;
   ngOnInit(): void {
     this.subject = webSocket('ws://localhost:8090');
     this.subject.subscribe({
