@@ -17,7 +17,8 @@ import { ChatComponent } from './view/chat/chat.component';
 import { PagenotfoundComponent } from './layout/pagenotfound/pagenotfound.component';
 import { CreateComponent } from './view/create/create.component';
 import { ChatroomComponent } from './global/chatroom/chatroom.component';
-import { RsocketstreamComponent } from './global/rsocketstream/rsocketstream.component';
+import { RsocketchatComponent } from './global/rsocketchat/rsocketchat.component';
+import { RsocketService } from './service/rsocketsocket.service';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,7 @@ import { RsocketstreamComponent } from './global/rsocketstream/rsocketstream.com
     PagenotfoundComponent,
     CreateComponent,
     ChatroomComponent,
-    RsocketstreamComponent,
+    RsocketchatComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,7 +44,7 @@ import { RsocketstreamComponent } from './global/rsocketstream/rsocketstream.com
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [HttpClientModule, RsocketService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

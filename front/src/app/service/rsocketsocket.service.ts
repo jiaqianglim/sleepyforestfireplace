@@ -9,38 +9,36 @@ import {
   Requestable,
 } from 'rsocket-core';
 import { WebsocketClientTransport } from 'rsocket-websocket-client';
-import {
-  ClientTransport,
-  Closeable,
-  Demultiplexer,
-  DuplexConnection,
-  FrameHandler,
-  Multiplexer,
-  Outbound,
-} from 'rsocket-core';
 import { ClientOptions } from 'rsocket-websocket-client/RSocketWebSocketClient';
-import { webSocket } from 'rxjs/webSocket';
+import { WebSocketSubject, webSocket } from 'rxjs/webSocket';
 import { RSocketConnector } from 'rsocket-core';
+import { Subject } from 'rxjs';
+import { catchError, tap, switchAll } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root',
 })
-export class RsocketserviceService implements RSocket, OnInit {
-  constructor() {}
+export class RsocketService implements RSocket {
   options: ClientOptions = {
     url: 'wss://localhost:7070',
   };
   clienttransport!: WebsocketClientTransport;
-  subject = webSocket('ws://localhost:7070');
+  private socket$!: Promise<RSocket>;
+  private messagesSubject$ = new Subject();
+  public messages$ = this.messagesSubject$.pipe(
+    catchError((e) => {
+      throw e;
+    })
+  );
 
-  ngOnInit(): void {
+  connect(): void {
     this.clienttransport = new WebsocketClientTransport(this.options);
     const connector = this.makeconnector();
-    const rsocket = connector.connect();
+    this.socket$ = connector.connect();
   }
-  makeconnector(){
+  makeconnector() {
     return new RSocketConnector({
-      transport: this.clienttransport
-    })
+      transport: this.clienttransport,
+    });
   }
   fireAndForget(
     payload: Payload,
@@ -90,7 +88,4 @@ export class RsocketserviceService implements RSocket, OnInit {
   onClose(callback: (error?: Error | undefined) => void): void {
     throw new Error('Method not implemented.');
   }
-}
-function ngOnInit() {
-  throw new Error('Function not implemented.');
 }
