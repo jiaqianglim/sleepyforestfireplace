@@ -13,12 +13,8 @@ import { CategoriesComponent } from './view/categories/categories.component';
 import { SidebarComponent } from './layout/sidebar/sidebar.component';
 import { LoginComponent } from './global/login/login.component';
 import { VenueComponent } from './view/venue/venue.component';
-import { ChatComponent } from './view/chat/chat.component';
 import { PagenotfoundComponent } from './layout/pagenotfound/pagenotfound.component';
 import { CreateComponent } from './view/create/create.component';
-import { ChatroomComponent } from './global/chatroom/chatroom.component';
-import { RsocketchatComponent } from './global/rsocketchat/rsocketchat.component';
-import { RsocketService } from './service/rsocketsocket.service';
 
 @NgModule({
   declarations: [
@@ -29,11 +25,8 @@ import { RsocketService } from './service/rsocketsocket.service';
     SidebarComponent,
     LoginComponent,
     VenueComponent,
-    ChatComponent,
     PagenotfoundComponent,
     CreateComponent,
-    ChatroomComponent,
-    RsocketchatComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,7 +37,7 @@ import { RsocketService } from './service/rsocketsocket.service';
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [HttpClientModule, RsocketService],
+  providers: [HttpClientModule,],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
