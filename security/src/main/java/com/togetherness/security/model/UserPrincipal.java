@@ -2,56 +2,25 @@ package com.togetherness.security.model;
 
 import java.util.Collection;
 
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.beans.factory.annotation.Autowired;
 
-public class UserPrincipal implements UserDetails {
+public class UserPrincipal extends BaseUser {
 
-    private UserEntity userEntity;
+    @Autowired
+    BaseUser baseUser;
 
-    public UserPrincipal creatUserPrincipal(UserEntity userEntity){
-        return new UserPrincipal(userEntity);
+    @Override
+    public String getUsername() {
+        return this.baseUser.getUsername();
     }
 
     @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getAuthorities'");
+    public Collection<String> getRoles() {
+        return this.baseUser.getRoles();
     }
 
     @Override
     public String getPassword() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getPassword'");
+        return null;
     }
-
-    @Override
-    public String getUsername() {
-        return this.userEntity.getEmail();
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'isAccountNonExpired'");
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'isAccountNonLocked'");
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'isCredentialsNonExpired'");
-    }
-
-    @Override
-    public boolean isEnabled() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'isEnabled'");
-    }
-
 }

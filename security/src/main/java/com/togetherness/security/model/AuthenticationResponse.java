@@ -1,6 +1,8 @@
 package com.togetherness.security.model;
 
-public class AuthenticationResponse {
+import java.io.Serializable;
+
+public class AuthenticationResponse implements Serializable {
     private String token;
 
     public AuthenticationResponse() {

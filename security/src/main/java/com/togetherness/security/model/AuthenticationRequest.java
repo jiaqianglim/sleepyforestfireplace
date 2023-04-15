@@ -7,12 +7,8 @@ public class AuthenticationRequest implements Serializable {
     private String password;
 
     public AuthenticationRequest() {
-    };
+    }
 
-    /**
-     * @param email
-     * @param password
-     */
     public AuthenticationRequest(String email, String password) {
         this.email = email;
         this.password = password;
