@@ -10,7 +10,6 @@ import { ToptoolbarComponent } from './layout/toptoolbar/toptoolbar.component';
 import { HomeComponent } from './view/home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CategoriesComponent } from './view/categories/categories.component';
-import { SidebarComponent } from './layout/sidebar/sidebar.component';
 
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -26,7 +25,6 @@ import { JwtModule } from '@auth0/angular-jwt';
     ToptoolbarComponent,
     HomeComponent,
     CategoriesComponent,
-    SidebarComponent,
     AuthFormComponent,
     LoginComponent,
     RegisterComponent,
