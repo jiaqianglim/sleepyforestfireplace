@@ -9,7 +9,6 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ToptoolbarComponent } from './layout/toptoolbar/toptoolbar.component';
 import { HomeComponent } from './view/home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CategoriesComponent } from './view/categories/categories.component';
 
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -18,16 +17,17 @@ import { AuthFormComponent } from './security/auth-form/auth-form.component';
 import { LoginComponent } from './security/login/login.component';
 import { RegisterComponent } from './security/register/register.component';
 import { JwtModule } from '@auth0/angular-jwt';
+import { TopicComponent } from './view/topic/topic.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ToptoolbarComponent,
     HomeComponent,
-    CategoriesComponent,
     AuthFormComponent,
     LoginComponent,
     RegisterComponent,
+    TopicComponent,
   ],
   imports: [
     BrowserModule,

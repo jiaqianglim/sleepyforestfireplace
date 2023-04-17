@@ -1,4 +1,4 @@
-export interface topic {
+export interface Topic {
   name: string;
   category: string;
   description: string;
