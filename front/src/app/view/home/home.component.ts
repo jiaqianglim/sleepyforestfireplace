@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   livetopics!: Topic[];
   destroy$ = new Subject<void>();
   filterform!: FormGroup;
+  opened!: boolean;
 
   categories: categoryoption[] = [
     { value: 'featured', viewValue: 'Featured' },
@@ -52,4 +53,6 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   onProcessFilterForm() {}
+
+  searchterm() {}
 }

@@ -18,6 +18,7 @@ import { LoginComponent } from './security/login/login.component';
 import { RegisterComponent } from './security/register/register.component';
 import { JwtModule } from '@auth0/angular-jwt';
 import { TopicComponent } from './view/topic/topic.component';
+import { TopicformComponent } from './view/topicform/topicform.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { TopicComponent } from './view/topic/topic.component';
     LoginComponent,
     RegisterComponent,
     TopicComponent,
+    TopicformComponent,
   ],
   imports: [
     BrowserModule,
