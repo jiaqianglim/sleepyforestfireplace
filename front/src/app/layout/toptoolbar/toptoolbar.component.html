@@ -8,17 +8,14 @@
   </button>
   <span>Togetherness</span>
   <span class="example-spacer"></span>
-  <button
-    mat-icon-button
-    class="favorite-icon"
-    aria-label="favourite"
-  >
+  <button mat-icon-button class="favorite-icon" aria-label="favourite">
     <mat-icon>favorite</mat-icon>
   </button>
   <button
     mat-icon-button
     class="person-icon"
     aria-label="user"
+    [routerLink]="['/login']"
   >
     <mat-icon>person</mat-icon>
   </button>

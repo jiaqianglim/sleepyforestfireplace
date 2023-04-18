@@ -14,8 +14,7 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { HeaderInterceptor } from './security/header.interceptor';
 import { AuthFormComponent } from './security/auth-form/auth-form.component';
-import { LoginComponent } from './security/login/login.component';
-import { RegisterComponent } from './security/register/register.component';
+
 import { JwtModule } from '@auth0/angular-jwt';
 import { TopicComponent } from './view/topic/topic.component';
 import { TopicformComponent } from './view/topicform/topicform.component';
@@ -26,8 +25,6 @@ import { TopicformComponent } from './view/topicform/topicform.component';
     ToptoolbarComponent,
     HomeComponent,
     AuthFormComponent,
-    LoginComponent,
-    RegisterComponent,
     TopicComponent,
     TopicformComponent,
   ],
