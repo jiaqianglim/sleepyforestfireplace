@@ -1,1 +1,45 @@
-<p>home works!</p>
+<div class="container">
+  <mat-drawer-container>
+    <mat-drawer mode="over" opened="false">
+      <form [formGroup]="filterform" (ngSubmit)="onProcessFilterForm()">
+        <mat-form-field class="example-full-width">
+          <mat-label>Search Topics</mat-label>
+          <input mat-input placeholder="name of topic or event" />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Categories</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let cat of categories" [value]="cat.value">
+              {{ cat.viewValue }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <button type="submit">Filter</button>
+      </form>
+    </mat-drawer>
+    <mat-drawer-content>
+      <h1>Featured</h1>
+      <mat-card class="Featured-card">
+        <mat-card-header>
+          <div mat-card-avatar class="Featured-header-image"></div>
+          <mat-card-title>VTTP Presentation</mat-card-title>
+          <mat-card-subtitle>This presentation right here</mat-card-subtitle>
+        </mat-card-header>
+        <img
+          mat-card-image
+          src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+          alt="Photo of a Shiba Inu"
+        />
+        <mat-card-content>
+          <p>
+            This presentation is pretty okay I guess. 
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button>INFO</button>
+          <button mat-button>SHARE</button>
+        </mat-card-actions>
+      </mat-card>
+    </mat-drawer-content>
+  </mat-drawer-container>
+</div>
