@@ -1,3 +1,33 @@
-<form>
-  
+<form (ngSubmit)="processform()">
+  <h4>Landing Tab</h4>
+  <mat-form-field appearance="fill">
+    <mat-label>Name of topic:</mat-label>
+    <input matInput />
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Category</mat-label>
+    <mat-select>
+      <mat-option>
+        <!-- TODO -->
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Image Link</mat-label>
+    <input type="textarea" matInput />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Select File:Premium users only</mat-label>
+    <input matInput type="file" accept="image/*" disabled>
+  </mat-form-field>
+  <mat-divider></mat-divider>
+  <h4>Standard Tabs & Options</h4>
+  <mat-checkbox>Disable Chatroom</mat-checkbox>
+  <mat-checkbox>Disable Announcements</mat-checkbox>
+  <mat-checkbox>Disable Notifications</mat-checkbox>
+  <mat-checkbox></mat-checkbox>
+  <button mat-icon-button (click)="addcustomtab()">
+    <mat-icon>add</mat-icon>
+  </button>
+  <button mat-flat-button type="submit">Submit</button>
 </form>
