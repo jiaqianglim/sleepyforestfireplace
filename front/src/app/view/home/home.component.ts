@@ -17,6 +17,7 @@ interface categoryoption {
 })
 export class HomeComponent implements OnInit, OnDestroy {
   livetopics!: Topic[];
+  chattopic = 'homepage';
   destroy$ = new Subject<void>();
   filterform!: FormGroup;
   opened!: boolean;

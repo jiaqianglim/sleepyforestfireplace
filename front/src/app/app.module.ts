@@ -18,6 +18,8 @@ import { AuthFormComponent } from './security/auth-form/auth-form.component';
 import { JwtModule } from '@auth0/angular-jwt';
 import { TopicComponent } from './view/topic/topic.component';
 import { TopicformComponent } from './view/topicform/topicform.component';
+import { ChatroomboxComponent } from './layout/chatroombox/chatroombox.component';
+import { GooglemapComponent } from './layout/googlemap/googlemap.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,8 @@ import { TopicformComponent } from './view/topicform/topicform.component';
     AuthFormComponent,
     TopicComponent,
     TopicformComponent,
+    ChatroomboxComponent,
+    GooglemapComponent,
   ],
   imports: [
     BrowserModule,

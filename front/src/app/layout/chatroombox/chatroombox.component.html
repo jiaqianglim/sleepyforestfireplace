@@ -1,0 +1,11 @@
+<div class="chatroombox">
+  <div class="chatcontainer">
+    <p></p>
+  </div>
+  <div class="chatinput">
+    <form [formGroup]="inputForm" (ngSubmit)="submitMessage()">
+      <input type="textarea" formControlName="messagebody" />
+      <button mat-flat-button color="primary" type="submit">Chat</button>
+    </form>
+  </div>
+</div>

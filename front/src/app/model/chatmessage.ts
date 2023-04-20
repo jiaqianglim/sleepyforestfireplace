@@ -1,5 +1,4 @@
 export interface ChatMessage {
-  username: string;
+  username: string | null;
   messagebody: string;
-  jwt: string;
 }
