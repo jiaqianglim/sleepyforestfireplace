@@ -1,2 +1,2 @@
-<app-toptoolbar></app-toptoolbar>
+<app-toptoolbar [loggedIn]="url != '/' && !url.includes('login')" (actionEmitter)="submit($event)"></app-toptoolbar>
 <router-outlet></router-outlet>

@@ -57,7 +57,7 @@
         </mat-card-header>
         <img
           mat-card-image
-          src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+          src="https://i.imgur.com/vlM4Te3.jpeg"
           alt="Photo of a Shiba Inu"
         />
         <mat-card-content>
@@ -71,7 +71,30 @@
       <mat-divider></mat-divider>
       <app-chatroombox [chattopic]="chattopic"></app-chatroombox>
       <mat-divider></mat-divider>
-      <h1>YOUR MOM'S FAVOURITE EVENTS</h1>
+      <!---Semi-->
+      <h1>LIVE RIGHT NOW</h1>
+      <div class="card-container">
+        <mat-card class="scroll-card">
+          <mat-card-header>
+            <div mat-card-avatar class="scroll-card-header-image"></div>
+            <mat-card-title>VTTP Presentation</mat-card-title>
+            <mat-card-subtitle
+              >This presentation right here</mat-card-subtitle
+            > </mat-card-header
+          ><img
+            mat-card-image
+            src="https://i.imgur.com/vlM4Te3.jpeg"
+            alt="Photo of a Shiba Inu"
+          />
+          <mat-card-content>
+            <p>This presentation is pretty okay I guess.</p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-stroked-button>FIND OUT MORE</button>
+            <button mat-stroked-button>JOIN CHAT</button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
     </mat-sidenav-content>
   </mat-sidenav-container>
 </div>

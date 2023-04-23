@@ -20,7 +20,9 @@ import { TopicComponent } from './view/topic/topic.component';
 import { TopicformComponent } from './view/topicform/topicform.component';
 import { ChatroomboxComponent } from './layout/chatroombox/chatroombox.component';
 import { GooglemapComponent } from './layout/googlemap/googlemap.component';
-
+export function tokenGetter() {
+  return localStorage.getItem('token');
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,7 +44,12 @@ import { GooglemapComponent } from './layout/googlemap/googlemap.component';
     ReactiveFormsModule,
     StoreModule.forRoot({}, {}),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
-    JwtModule.forRoot({}),
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        allowedDomains: ['localhost:8080', 'localhost:4200'],
+      },
+    }),
   ],
   providers: [
     HttpClientModule,

@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Subject, takeUntil } from 'rxjs';
-import { Topic } from 'src/app/model/topic';
+import { TopicCard } from 'src/app/model/topic';
 import { LiveTopicService } from 'src/app/service/livetopic.service';
 
 interface categoryoption {
@@ -16,7 +16,7 @@ interface categoryoption {
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit, OnDestroy {
-  livetopics!: Topic[];
+  livetopics!: TopicCard[];
   chattopic = 'homepage';
   destroy$ = new Subject<void>();
   filterform!: FormGroup;
@@ -25,10 +25,9 @@ export class HomeComponent implements OnInit, OnDestroy {
   categories: categoryoption[] = [
     { value: 'featured', viewValue: 'Featured' },
     { value: 'release_local', viewValue: 'Live Around You' },
-    { value: 'release_news', viewValue: 'Live: World News' },
-    { value: 'release_sports', viewValue: 'Live: Sports' },
-    { value: 'release_tvshows', viewValue: 'Live: TV Episodes' },
-    { value: 'release_politics', viewValue: 'Live: Government & Politics' },
+    { value: 'release_news', viewValue: 'Live: News' },
+    { value: 'release_digital', viewValue: 'Digital Releases' },
+    { value: 'Brands', viewValue: 'Brands' },
   ];
   constructor(
     private livetopicservice: LiveTopicService,

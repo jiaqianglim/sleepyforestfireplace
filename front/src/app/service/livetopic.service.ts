@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Topic } from '../model/topic';
+import { Topic, TopicCard } from '../model/topic';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 const WEBFLUX = environment.WEBFLUX;
@@ -11,7 +11,7 @@ const WEBFLUX = environment.WEBFLUX;
 export class LiveTopicService {
   constructor(private http: HttpClient) {}
 
-  getLatestTopics(): Observable<Topic[]> {
-    return this.http.get<Topic[]>(`${WEBFLUX}/livetopics`);
+  getLatestTopics(): Observable<TopicCard[]> {
+    return this.http.get<TopicCard[]>(`${WEBFLUX}/livetopics`);
   }
 }

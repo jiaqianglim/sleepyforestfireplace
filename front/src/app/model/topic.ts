@@ -1,6 +1,8 @@
-export interface Topic {
-  name: string;
-  category: string;
+export interface TopicCard {
+  nametitle: string;
+  categorysubtitle: string;
+  avatarimageurl: string;
+  mainimageurl: string;
   description: string;
-  imageurl: string;
 }
+export interface Topic {}

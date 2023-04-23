@@ -2,7 +2,7 @@ export const environment = {
   production: false,
 
   WEBMVC: 'localhost:8080',
-  WEBFLUX: 'localhost:8081',
+  WEBFLUX: 'localhost:8080',
 
   firebase: {
     apiKey: 'AIzaSyAHufuK1cQ_hzPOcjclbNbQZB47GDqmS90',

@@ -1,5 +1,19 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewEncapsulation,
+} from '@angular/core';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  FormGroupDirective,
+  NgForm,
+  Validators,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 
@@ -7,19 +21,29 @@ import { AuthService } from '../auth.service';
   selector: 'app-auth-form',
   templateUrl: './auth-form.component.html',
   styleUrls: ['./auth-form.component.css'],
+  encapsulation: ViewEncapsulation.None,
 })
-export class AuthFormComponent {
-  loginform: FormGroup;
+export class AuthFormComponent implements OnInit {
+  loginform!: FormGroup;
   action: string = 'Login';
-
+  emailFormControl = new FormControl('', [
+    Validators.required,
+    Validators.email,
+  ]);
+  normalFormControl = new FormControl('', [Validators.required]);
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
     private router: Router
   ) {
+    this.checkJWT();
+  }
+  ngOnInit(): void {
     this.loginform = this.fb.group({
+      username: ['', [Validators.required]],
       email: ['', [Validators.email, Validators.required]],
       password: ['', Validators.required],
+      membership: [''],
     });
   }
   chooseLogin() {
@@ -45,7 +69,9 @@ export class AuthFormComponent {
   }
   checkJWT() {
     if (this.authService.isAuthenticated()) {
-      //TODO
+      if (this.authService.isAuthenticated()) {
+        this.router.navigate(['/']);
+      }
     }
   }
 }

@@ -27,3 +27,13 @@
   background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
   background-size: cover;
 }
+.card-container {
+  display: flex;
+}
+.scroll-card {
+  width: 50%;
+  height: 200px;
+}
+.scroll-card-header-image {
+  background-size: cover;
+}

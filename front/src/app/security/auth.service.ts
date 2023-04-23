@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable, catchError, tap, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -10,21 +11,35 @@ const ENVIRONMENT = environment.WEBMVC;
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private http: HttpClient, private jwtHelper: JwtHelperService) {}
+  constructor(
+    private http: HttpClient,
+    private jwtHelper: JwtHelperService,
+    private router: Router
+  ) {}
 
   isAuthenticated(): boolean {
     const token = localStorage.getItem('token') ?? '';
     return !this.jwtHelper.isTokenExpired(token);
   }
 
-  login(data: { email: string; password: string }): Observable<any> {
-    return this.http.post<any>(`${ENVIRONMENT}/authenticate`, data).pipe(
+  login(data: {
+    email: string;
+    password: string;
+    username: string;
+    membership: string;
+  }): Observable<any> {
+    return this.http.post<any>(`${ENVIRONMENT}/login`, data).pipe(
       tap((data: any) => data),
       catchError((err) => throwError(() => err))
     );
   }
 
-  register(data: { email: string; password: string }): Observable<any> {
+  register(data: {
+    email: string;
+    password: string;
+    username: string;
+    membership: string;
+  }): Observable<any> {
     return this.http.post<any>(`${ENVIRONMENT}/register`, data).pipe(
       tap((data: any) => data),
       catchError((err) => throwError(() => err))
@@ -32,6 +47,9 @@ export class AuthService {
   }
 
   logout() {
-    localStorage.removeItem('token');
+    let removeToken = localStorage.removeItem('token');
+    if (removeToken == null) {
+      this.router.navigate(['login']);
+    }
   }
 }

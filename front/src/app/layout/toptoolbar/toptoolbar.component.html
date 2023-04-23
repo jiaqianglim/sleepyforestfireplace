@@ -6,17 +6,30 @@
   >
     <mat-icon>menu</mat-icon>
   </button>
-  <span>Togetherness</span>
+  <button mat-button class="mainlogo">Hyyyped!</button>
   <span class="example-spacer"></span>
   <button mat-icon-button class="favorite-icon" aria-label="favourite">
-    <mat-icon matBadge="2" matBadgeOverlap="false" matBadgeColor="primary">favorite</mat-icon>
+    <mat-icon matBadge="2" matBadgeOverlap="false" matBadgeColor="primary"
+      >favorite</mat-icon
+    >
   </button>
   <button
+    [matMenuTriggerFor]="menu"
     mat-icon-button
     class="person-icon"
     aria-label="user"
-    [routerLink]="['/login']"
   >
     <mat-icon>person</mat-icon>
   </button>
+  <mat-menu #menu="matMenu">
+    <button *ngIf="!loggedIn" [routerLink]="['/login']" mat-button>
+      Log In/Register
+    </button>
+    <button *ngIf="loggedIn" color="yellow" mat-menu-item>
+      <a href="https://buy.stripe.com/test_5kAfZ45cz9r8eqY8ww">Subscribe</a>
+    </button>
+    <button *ngIf="loggedIn" (click)="submit('logout')" mat-button>
+      Log Out
+    </button>
+  </mat-menu>
 </mat-toolbar>
