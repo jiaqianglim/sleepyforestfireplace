@@ -1,8 +1,10 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { take, lastValueFrom } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { setTimeout } from 'timers/promises';
 
 declare var Stripe: any;
 const STRIPEPUBLICKEY = environment.STRIPEPUBLICKEY;
@@ -18,7 +20,11 @@ export class StripepaymentComponent implements OnInit {
   cardElement!: any;
   clientSecret!: string;
   finalMessage: string = '';
-  constructor(private http: HttpClient, private fb: FormBuilder) {}
+  constructor(
+    private http: HttpClient,
+    private fb: FormBuilder,
+    private router: Router
+  ) {}
   ngOnInit(): void {
     this.paymentForm = this.fb.group({
       customer: this.fb.control<string>('', Validators.required),
@@ -33,7 +39,7 @@ export class StripepaymentComponent implements OnInit {
     cardElement.mount('#card-element');
   }
 
-  processForm() {
+  async processForm() {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
     const result$ = this.http
       .post<string>('/payment/create-payment-intent', JSON.stringify({}), {
@@ -56,6 +62,8 @@ export class StripepaymentComponent implements OnInit {
       },
     });
     this.carderror = true;
-    this.finalMessage = `Payment is ${paymentIntent.status}, you may now leave this page`;
+    this.finalMessage = `Payment is ${paymentIntent.status}, you may now leave this page, or be redirected in 3 seconds`;
+    await setTimeout(3000);
+    this.router.navigate(['/']);
   }
 }

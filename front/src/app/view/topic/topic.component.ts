@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-topic',
@@ -8,11 +8,16 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./topic.component.css'],
 })
 export class TopicComponent implements OnInit, OnDestroy {
+  constructor(private activatedRoute: ActivatedRoute, private title: Title) {}
+
+  chattopic!: string;
+
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    const topicname = this.activatedRoute.snapshot.params['topicname'];
+    this.chattopic = topicname;
+    this.title = topicname;
   }
   ngOnDestroy(): void {
     throw new Error('Method not implemented.');
   }
-
 }

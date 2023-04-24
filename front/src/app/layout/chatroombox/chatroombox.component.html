@@ -1,6 +1,8 @@
 <div class="chatroombox">
   <div class="chatcontainer">
-    <p></p>
+    <p *ngFor="let ChatMessage of messages">
+      {{ ChatMessage.username }}:{{ ChatMessage.messagebody }}
+    </p>
   </div>
   <div class="chatinput">
     <form [formGroup]="inputForm" (ngSubmit)="submitMessage()">

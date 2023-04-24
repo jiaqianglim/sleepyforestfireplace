@@ -9,6 +9,7 @@ import { mapcords } from 'src/app/model/mapcords';
 export class GooglemapComponent implements OnInit {
   @Input() coordinates!: mapcords;
   @Input() locationname!: string;
+  @Input() locationdescription!: string;
 
   ngOnInit(): void {
     let map;
@@ -20,17 +21,20 @@ export class GooglemapComponent implements OnInit {
     //@ts-ignore
     const { Map } = await google.maps.importLibrary('maps');
     //@ts-ignore
-    const { AdvancedMarkerView } = await google.maps.importLibrary('marker');
+    const { Marker } = await google.maps.importLibrary('marker');
     map = new Map(document.getElementById('map') as HTMLElement, {
       zoom: 4,
       center: this.coordinates,
-      mapId: 'DEMO_MAP_ID',
     });
 
-    const marker = new AdvancedMarkerView({
+    const marker = new Marker({
       map: map,
       position: this.coordinates,
       title: this.locationname,
+    });
+    const infowindow = new google.maps.InfoWindow({
+      content: this.locationdescription,
+      ariaLabel: '',
     });
   }
 }

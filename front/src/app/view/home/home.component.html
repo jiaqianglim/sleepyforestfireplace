@@ -55,17 +55,14 @@
           <mat-card-title>VTTP Presentation</mat-card-title>
           <mat-card-subtitle>This presentation right here</mat-card-subtitle>
         </mat-card-header>
-        <img
-          mat-card-image
-          src="https://i.imgur.com/vlM4Te3.jpeg"
-          alt="Photo of a Shiba Inu"
-        />
+        <img mat-card-image src="https://i.imgur.com/vlM4Te3.jpeg" />
         <mat-card-content>
           <p>This presentation is pretty okay I guess.</p>
         </mat-card-content>
         <mat-card-actions>
-          <button mat-stroked-button>FIND OUT MORE</button>
-          <button mat-stroked-button>JOIN CHAT</button>
+          <button mat-stroked-button>
+            <a [routerLink]="['/topic', 'featured']">FIND OUT MORE</a>
+          </button>
         </mat-card-actions>
       </mat-card>
       <mat-divider></mat-divider>
@@ -91,7 +88,6 @@
           </mat-card-content>
           <mat-card-actions>
             <button mat-stroked-button>FIND OUT MORE</button>
-            <button mat-stroked-button>JOIN CHAT</button>
           </mat-card-actions>
         </mat-card>
       </div>

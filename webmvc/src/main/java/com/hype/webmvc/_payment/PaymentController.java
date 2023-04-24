@@ -46,23 +46,24 @@ public class PaymentController {
             throws StripeException, IOException {
 
         PaymentIntent newPaymentIntent = psvc._createPaymentObject(payload);
-        String payments_intents_endpoint = UriComponentsBuilder.fromUriString(Values.STRIPEBASEURL).toUriString();
-        RequestEntity<String> req = RequestEntity.post(payments_intents_endpoint)
-                .contentType(MediaType.APPLICATION_JSON)
-                .accept(MediaType.APPLICATION_JSON)
-                .body(newPaymentIntent.toString());
+        // String payments_intents_endpoint =
+        // UriComponentsBuilder.fromUriString(Values.STRIPEBASEURL).toUriString();
+        // RequestEntity<String> req = RequestEntity.post(payments_intents_endpoint)
+        // .contentType(MediaType.APPLICATION_JSON)
+        // .accept(MediaType.APPLICATION_JSON)
+        // .body(newPaymentIntent.toString());
 
-        Event event = rtemp.exchange(req, Event.class).getBody();
-        EventDataObjectDeserializer dataObjectDeserializer = event.getDataObjectDeserializer();
-        StripeObject stripeObject = null;
-        if (dataObjectDeserializer.getObject().isPresent()) {
-            stripeObject = dataObjectDeserializer.getObject().get();
-        }
-        switch (event.getType()) {
-            case "payment_intent.created":
-                PaymentIntent paymentIntent = (PaymentIntent) stripeObject;
-        }
+        // Event event = rtemp.exchange(req, Event.class).getBody();
+        // EventDataObjectDeserializer dataObjectDeserializer =
+        // event.getDataObjectDeserializer();
+        // StripeObject stripeObject = null;
+        // if (dataObjectDeserializer.getObject().isPresent()) {
+        // stripeObject = dataObjectDeserializer.getObject().get();
+        // }
+        // if (event.getType().equals("payment_intent.created")) {
+        // PaymentIntent paymentIntent = (PaymentIntent) stripeObject;
+        // }
 
-        return ResponseEntity.ok().body("");
+        return ResponseEntity.ok().body(newPaymentIntent.toJson());
     }
 }

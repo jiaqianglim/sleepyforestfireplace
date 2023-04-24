@@ -1,33 +1,97 @@
-<form (ngSubmit)="processform()">
-  <h4>Landing Tab</h4>
-  <mat-form-field appearance="fill">
-    <mat-label>Name of topic:</mat-label>
-    <input matInput />
-  </mat-form-field>
-  <mat-form-field appearance="fill">
-    <mat-label>Category</mat-label>
-    <mat-select>
-      <mat-option>
-        <!-- TODO -->
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>Image Link</mat-label>
-    <input type="textarea" matInput />
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>Select File:Premium users only</mat-label>
-    <input matInput type="file" accept="image/*" disabled>
-  </mat-form-field>
+<form [formGroup]="topicForm" (ngSubmit)="processform()">
+  <div [formGroup]="baseForm">
+    <input type="text" value="Info" hidden formControlName="tablabel" />
+    <mat-form-field appearance="fill">
+      <mat-label>Name of topic:</mat-label>
+      <input matInput formControlName="name" />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Category</mat-label>
+      <mat-select formControlName="category">
+        <mat-option *ngFor="let category of categories">
+          {{ category }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Image Link</mat-label>
+      <input type="text" matInput formControlName="imagelink" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Description of topic</mat-label>
+      <input matInput type="textarea" formControlName="description" />
+    </mat-form-field>
+  </div>
   <mat-divider></mat-divider>
-  <h4>Standard Tabs & Options</h4>
-  <mat-checkbox>Disable Chatroom</mat-checkbox>
-  <mat-checkbox>Disable Announcements</mat-checkbox>
-  <mat-checkbox>Disable Notifications</mat-checkbox>
-  <mat-checkbox></mat-checkbox>
-  <button mat-icon-button (click)="addcustomtab()">
-    <mat-icon>add</mat-icon>
+  <button mat-flat-button color="primary" (click)="addmaptab()">Add Map</button>
+  <ng-container *ngFor="let _ of [].constructor(maptabcount)">
+    <div [formGroup]="mapForm">
+      <p>New Map Tab</p>
+      <mat-form-field>
+        <mat-label>Map Marker Label</mat-label>
+        <input matInput formControlName="markerlabel" />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Latitude Coordinates</mat-label>
+        <input matInput formControlName="lat" />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Longtitude Coordinates</mat-label>
+        <input matInput formControlName="lng" />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Description</mat-label>
+        <textarea matInput formControlName="locationdescription"></textarea>
+      </mat-form-field>
+    </div>
+  </ng-container>
+  <button mat-flat-button color="primary" (click)="addinformationtab()">
+    Add Info
   </button>
-  <button mat-flat-button type="submit">Submit</button>
+  <ng-container *ngFor="let _ of [].constructor(infotabcount)">
+    <div [formGroup]="infoForm">
+      <p>New Information Tab</p>
+      <div formArrayName="infoArray">
+        <div *ngFor="let row of infoArray.controls">
+          <mat-form-field>
+            <mat-label>Section Title</mat-label>
+            <input mat-input formControlName="sectiontitle" />
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Section Title</mat-label>
+            <input mat-input formControlName="sectiontitle" />
+          </mat-form-field>
+        </div>
+      </div>
+      <button (click)="addinformationtabrow()"></button>
+    </div>
+  </ng-container>
+  <button mat-flat-button color="primary" (click)="addpicturegallerytab()">
+    Add Gallery
+  </button>
+  <ng-container *ngFor="let _ of [].constructor(picturegallerytabcount)">
+    <div [formGroup]="galleryForm">
+      <p>New Picture Gallery Tab</p>
+      <mat-form-field>
+        <mat-label>Image link</mat-label>
+        <input mat-input formControlName="imagelink" />
+      </mat-form-field>
+      <button (click)="addpicturegallerytabrow()"></button>
+    </div>
+  </ng-container>
+  <button mat-flat-button color="primary" (click)="addchatroomtab()">
+    Add Sub Chat
+  </button>
+  <ng-container *ngFor="let _ of [].constructor(chatroomtabcount)">
+    <div [formGroup]="discussionForm">
+      <p>New Chatroom Tab</p>
+      <p>Discussion tab title:</p>
+      <mat-form-field>
+        <mat-label>Discussion topic</mat-label>
+        <input mat-input formControlName="tablabel" />
+      </mat-form-field>
+    </div>
+  </ng-container>
+  <mat-divider></mat-divider>
+  <button mat-flat-button color="warn" type="submit">Submit</button>
 </form>

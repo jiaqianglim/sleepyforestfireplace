@@ -4,12 +4,14 @@ import { HomeComponent } from '../view/home/home.component';
 import { AuthFormComponent } from '../security/auth-form/auth-form.component';
 import { TopicformComponent } from '../view/topicform/topicform.component';
 import { TopicComponent } from '../view/topic/topic.component';
+import { StripepaymentComponent } from '../view/stripepayment/stripepayment.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: AuthFormComponent },
-  { path: 'form', component: TopicformComponent },
+  { path: 'topicform', component: TopicformComponent },
   { path: 'topic/:topicname', component: TopicComponent },
+  { path: 'payment', component: StripepaymentComponent },
 ];
 
 @NgModule({

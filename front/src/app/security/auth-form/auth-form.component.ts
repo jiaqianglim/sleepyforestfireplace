@@ -57,8 +57,9 @@ export class AuthFormComponent implements OnInit {
     const data = this.loginform.value;
     if (this.action == 'Login') {
       this.authService.login(data).subscribe((data) => {
-        this.router.navigate(['/']);
         localStorage.setItem('token', data.token);
+        localStorage.setItem('email', this.loginform.get('email')?.value);
+        this.router.navigate(['/']);
       });
     }
     if (this.action == 'Register') {

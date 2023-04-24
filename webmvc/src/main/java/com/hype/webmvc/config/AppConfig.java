@@ -3,12 +3,10 @@ package com.hype.webmvc.config;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.UUID;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Scope;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.http.MediaType;
 import org.springframework.http.RequestEntity;
@@ -28,6 +26,9 @@ import jakarta.json.JsonReader;
 @EnableScheduling
 public class AppConfig {
 
+    @Autowired
+    RedisTemplate<String, Integer> redistemp;
+
     @Scheduled(cron = "@daily")
     public void getDailyTVUpdates() throws IOException {
         String url = UriComponentsBuilder.fromUriString("https://api.tvmaze.com/schedule/web")
@@ -41,18 +42,14 @@ public class AppConfig {
             JsonReader reader = Json.createReader(is);
             JsonArray resultarray = reader.readArray();
             for (int i = 0; i < resultarray.size(); i++) {
-                
+
             }
         }
     }
 
-    @Scheduled(cron = "0 0 */3 * * *")
-    public void updateMembershipExpiration() {
-
-    }
-
-    @Scheduled(cron = "0 */5 * * * *")
+    @Scheduled(cron = "0 */10 * * * *")
     public void refreshPopularCount() {
-
+        Set<String> keyset = redistemp.keys("*");
+        redistemp.delete(keyset);
     }
 }
