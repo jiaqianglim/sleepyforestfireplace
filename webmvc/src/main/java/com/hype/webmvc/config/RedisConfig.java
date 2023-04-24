@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
+import org.springframework.data.redis.connection.RedisConnection;
 import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
 import org.springframework.data.redis.connection.jedis.JedisClientConfiguration;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
@@ -36,6 +37,19 @@ public class RedisConfig {
         template.setKeySerializer(new StringRedisSerializer());
         template.setValueSerializer(new StringRedisSerializer());
         return template;
+    }
+
+    @Bean
+    @Scope("prototype")
+    public RedisConnection createRedisConnection() {
+        final RedisStandaloneConfiguration config = new RedisStandaloneConfiguration();
+        config.setDatabase(redisDatabase);
+        config.setHostName(redisHost);
+        final JedisClientConfiguration jedisClient = JedisClientConfiguration.builder().build();
+        final JedisConnectionFactory jedisFac = new JedisConnectionFactory(
+                config, jedisClient);
+        jedisFac.afterPropertiesSet();
+        return jedisFac.getConnection();
     }
 
 }

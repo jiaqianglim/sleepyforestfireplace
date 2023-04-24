@@ -8,7 +8,6 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -20,9 +19,11 @@ public class UserService implements UserDetailsService {
     @Autowired
     UserRepo repo;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     public BasicUser createUser(BasicUser user) {
 
-        PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
         String result = passwordEncoder.encode(user.getPassword());
         user.setPassword(result);
         boolean success = repo.saveUser(user);
@@ -66,7 +67,7 @@ public class UserService implements UserDetailsService {
     }
 
     private Boolean verifyPassword(String inputpassword, String databasepassword) {
-        PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+
         String result = passwordEncoder.encode(inputpassword);
         return result.equals(databasepassword);
     }

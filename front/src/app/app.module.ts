@@ -20,6 +20,7 @@ import { TopicComponent } from './view/topic/topic.component';
 import { TopicformComponent } from './view/topicform/topicform.component';
 import { ChatroomboxComponent } from './layout/chatroombox/chatroombox.component';
 import { GooglemapComponent } from './layout/googlemap/googlemap.component';
+import { StripepaymentComponent } from './view/stripepayment/stripepayment.component';
 export function tokenGetter() {
   return localStorage.getItem('token');
 }
@@ -33,6 +34,7 @@ export function tokenGetter() {
     TopicformComponent,
     ChatroomboxComponent,
     GooglemapComponent,
+    StripepaymentComponent,
   ],
   imports: [
     BrowserModule,

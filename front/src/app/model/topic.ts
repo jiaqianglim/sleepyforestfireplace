@@ -5,4 +5,8 @@ export interface TopicCard {
   mainimageurl: string;
   description: string;
 }
-export interface Topic {}
+export interface Topic {
+  name: string;
+  category: string;
+  
+}

@@ -3,6 +3,8 @@ export const environment = {
 
   WEBMVC: 'localhost:8080',
   WEBFLUX: 'localhost:8080',
+  STRIPEPUBLICKEY:
+    'sk_test_51MvssFDjgly01pNnUpiyR9Z43C4IKvEYU7M7TO7xTV4A10vbx7SnXIfEmZLoVd59nCjxt07H3jQTwJH5stg42DAy00zl25pDHP',
 
   firebase: {
     apiKey: 'AIzaSyAHufuK1cQ_hzPOcjclbNbQZB47GDqmS90',
