@@ -11,6 +11,7 @@ import com.hype.webmvc._security.model.BasicUser;
 
 @Repository
 public class UserRepo {
+
     @Autowired
     JdbcTemplate temp;
 
