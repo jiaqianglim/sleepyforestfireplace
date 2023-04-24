@@ -11,7 +11,7 @@
       </button>
     </div>
     <div class="search-form">
-      <form (ngSubmit)="searchterm()">
+      <form (ngSubmit)="onProcessSimpleSearch()">
         <mat-form-field>
           <mat-label>Search</mat-label>
           <input
@@ -29,7 +29,7 @@
   <mat-sidenav-container class="sidenav-container">
     <mat-sidenav mode="over" #sidenav [(opened)]="opened" class="sidenav">
       <h3>Search Filters</h3>
-      <form [formGroup]="filterform" (ngSubmit)="onProcessFilterForm()">
+      <form [formGroup]="filterform" (ngSubmit)="onProcessAdvancedSearch()">
         <mat-form-field appearance="fill">
           <mat-label>Search</mat-label>
           <input matInput />
@@ -44,50 +44,92 @@
           </mat-select>
         </mat-form-field>
         <br />
-        <button type="submit">Filter</button>
+        <button mat-stroked-button type="submit">Filter</button>
       </form>
     </mat-sidenav>
     <mat-sidenav-content>
-      <h1>YOUR MOM'S FEATURED WEBSITE</h1>
+      <h1>MOST HYYYYPPPPED RIGHT HERE</h1>
       <mat-card class="Featured-card">
         <mat-card-header>
           <div mat-card-avatar class="Featured-header-image"></div>
           <mat-card-title>VTTP Presentation</mat-card-title>
-          <mat-card-subtitle>This presentation right here</mat-card-subtitle>
+          <mat-card-subtitle>This presentation right here.</mat-card-subtitle>
         </mat-card-header>
-        <img mat-card-image src="https://i.imgur.com/vlM4Te3.jpeg" />
+        <img
+          class="main-card-image"
+          mat-card-image
+          src="https://i.imgur.com/QWP1L.jpeg"
+        />
         <mat-card-content>
-          <p>This presentation is pretty okay I guess.</p>
+          <p>
+            This presentation is pretty okay I guess. Early in the morning, when
+            you haven't drank your coffee. You missed free fruits at VISA for
+            this.
+          </p>
         </mat-card-content>
         <mat-card-actions>
-          <button mat-stroked-button>
-            <a [routerLink]="['/topic', 'featured']">FIND OUT MORE</a>
-          </button>
+          <button mat-flat-button color="primary" (click)="gotofeaturedtopic()">FIND OUT MORE</button>
         </mat-card-actions>
       </mat-card>
       <mat-divider></mat-divider>
+      <!---Semi-->
       <app-chatroombox [chattopic]="chattopic"></app-chatroombox>
       <mat-divider></mat-divider>
       <!---Semi-->
-      <h1>LIVE RIGHT NOW</h1>
+      <h3>FEATURED:</h3>
       <div class="card-container">
         <mat-card class="scroll-card">
           <mat-card-header>
-            <div mat-card-avatar class="scroll-card-header-image"></div>
-            <mat-card-title>VTTP Presentation</mat-card-title>
+            <mat-card-title>The Mandalorian</mat-card-title>
             <mat-card-subtitle
-              >This presentation right here</mat-card-subtitle
+              >Web-Streaming</mat-card-subtitle
             > </mat-card-header
           ><img
+            height="200px"
             mat-card-image
-            src="https://i.imgur.com/vlM4Te3.jpeg"
-            alt="Photo of a Shiba Inu"
+            src="https://i.imgur.com/PrvaDlT.jpeg"
           />
           <mat-card-content>
             <p>This presentation is pretty okay I guess.</p>
           </mat-card-content>
           <mat-card-actions>
-            <button mat-stroked-button>FIND OUT MORE</button>
+            <button mat-flat-button color="primary">FIND OUT MORE</button>
+          </mat-card-actions>
+        </mat-card>
+        <mat-card class="scroll-card">
+          <mat-card-header>
+            <mat-card-title>S'pore Arts Fest</mat-card-title>
+            <mat-card-subtitle>Local Event</mat-card-subtitle> </mat-card-header
+          ><img
+            height="200px"
+            mat-card-image
+            src="https://i.imgur.com/SZFFlf1.jpeg"
+          />
+          <mat-card-content>
+            <p>This presentation is pretty okay I guess.</p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-flat-button color="primary">FIND OUT MORE</button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+      <!---Semi-->
+      <mat-divider></mat-divider>
+      <div class="card-container"></div>
+      <h3>Hot Right Now:</h3>
+      <div *ngFor="let item of livetopics">
+        <mat-card class="scroll-card">
+          <mat-card-header>
+            <mat-card-title>{{ item.title }}</mat-card-title>
+            <mat-card-subtitle>{{
+              item.subtitle
+            }}</mat-card-subtitle> </mat-card-header
+          ><img height="200px" mat-card-image src="item.imageurl" />
+          <mat-card-content>
+            <p>{{ item.description }}</p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-flat-button color="primary">FIND OUT MORE</button>
           </mat-card-actions>
         </mat-card>
       </div>

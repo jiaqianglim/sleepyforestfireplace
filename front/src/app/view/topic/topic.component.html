@@ -1,7 +1,9 @@
 <div class="container">
   <mat-tab-group>
     <mat-tab label="Info"> Content 1 </mat-tab>
-    <mat-tab label="Chat"> <app-chatroombox [chattopic]="chattopic"></app-chatroombox> </mat-tab>
-
+    <mat-tab label="Chat">
+      <app-chatroombox [chattopic]="chattopic"></app-chatroombox>
+    </mat-tab>
+    <mat-tab *ngFor="let item of tabitems" label="item.label"></mat-tab>
   </mat-tab-group>
 </div>

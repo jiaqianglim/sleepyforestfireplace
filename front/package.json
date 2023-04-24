@@ -38,6 +38,7 @@
     "rsocket-messaging": "^1.0.0-alpha.3",
     "rsocket-websocket-client": "^1.0.0-alpha.3",
     "rxjs": "~7.5.0",
+    "timers-promises": "^1.0.1",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0"
   },

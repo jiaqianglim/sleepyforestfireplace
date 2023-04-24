@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { TopicCard } from 'src/app/model/topic';
 import { LiveTopicService } from 'src/app/service/livetopic.service';
@@ -24,15 +25,16 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   categories: categoryoption[] = [
     { value: 'featured', viewValue: 'Featured' },
-    { value: 'release_local', viewValue: 'Live Around You' },
-    { value: 'release_news', viewValue: 'Live: News' },
-    { value: 'release_digital', viewValue: 'Digital Releases' },
-    { value: 'Brands', viewValue: 'Brands' },
+    { value: 'Web-Streaming', viewValue: 'Web-Streaming' },
+    { value: 'Local Events', viewValue: 'Local Events' },
+    { value: 'Locations', viewValue: 'Locations' },
+    { value: 'Campaigns', viewValue: 'Campaigns' },
   ];
   constructor(
     private livetopicservice: LiveTopicService,
     private http: HttpClient,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -52,7 +54,15 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.destroy$.complete();
   }
 
-  onProcessFilterForm() {}
+  onProcessSimpleSearch() {
+    this.router.navigate(['/search', this.filterform.value['querySting']]);
+  }
 
-  searchterm() {}
+  onProcessAdvancedSearch() {
+    this.router.navigate(['/search', this.filterform.value['querySting']]);
+  }
+
+  gotofeaturedtopic() {
+    this.router.navigate(['/featured']);
+  }
 }

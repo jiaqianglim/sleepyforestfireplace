@@ -16,12 +16,24 @@ export class ChatroomboxComponent implements OnInit, OnDestroy {
   inputForm!: FormGroup;
   constructor(private fb: FormBuilder) {}
   chatmessage!: ChatMessage;
+  chatmessage1!: ChatMessage;
+  chatmessage2!: ChatMessage;
   messages!: ChatMessage[];
   rxStomp!: RxStomp;
   subscription: any;
 
   ngOnInit(): void {
+    this.chatmessage1 = {
+      username: 'Admin',
+      messagebody: 'Join this community and start chatting!',
+    };
+    this.chatmessage2 = {
+      username: 'John',
+      messagebody: 'First!',
+    };
     this.messages = [];
+    this.messages.push(this.chatmessage1);
+    this.messages.push(this.chatmessage2);
     this.inputForm = this.fb.group({
       username: this.fb.control<string>(''),
       messagebody: this.fb.control<string>('', Validators.required),

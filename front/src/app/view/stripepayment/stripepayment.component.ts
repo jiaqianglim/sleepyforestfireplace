@@ -39,7 +39,7 @@ export class StripepaymentComponent implements OnInit {
     cardElement.mount('#card-element');
   }
 
-  async processForm() {
+  processForm() {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
     const result$ = this.http
       .post<string>('/payment/create-payment-intent', JSON.stringify({}), {
@@ -63,7 +63,6 @@ export class StripepaymentComponent implements OnInit {
     });
     this.carderror = true;
     this.finalMessage = `Payment is ${paymentIntent.status}, you may now leave this page, or be redirected in 3 seconds`;
-    await setTimeout(3000);
     this.router.navigate(['/']);
   }
 }

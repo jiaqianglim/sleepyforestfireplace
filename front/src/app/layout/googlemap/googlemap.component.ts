@@ -22,6 +22,8 @@ export class GooglemapComponent implements OnInit {
     const { Map } = await google.maps.importLibrary('maps');
     //@ts-ignore
     const { Marker } = await google.maps.importLibrary('marker');
+    //@ts-ignore
+    const { InfoWindow } = await google.maps.importLibrary('infowindow');
     map = new Map(document.getElementById('map') as HTMLElement, {
       zoom: 4,
       center: this.coordinates,
@@ -32,7 +34,7 @@ export class GooglemapComponent implements OnInit {
       position: this.coordinates,
       title: this.locationname,
     });
-    const infowindow = new google.maps.InfoWindow({
+    const infowindow = new InfoWindow({
       content: this.locationdescription,
       ariaLabel: '',
     });

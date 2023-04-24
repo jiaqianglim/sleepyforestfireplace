@@ -1,0 +1,14 @@
+.chatcontainer {
+  border-color: black;
+  border-width: 2px;
+  width: 100%;
+  height: 600px;
+  background-color: aqua;
+}
+
+.chatinput {
+  margin-right: 0;
+}
+.chatinputbox {
+  width: 360px;
+}

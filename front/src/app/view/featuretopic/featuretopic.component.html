@@ -1,0 +1,76 @@
+<mat-tab-group>
+  <mat-tab label="Info"
+    ><mat-card class="Featured-card">
+      <mat-card-header>
+        <div mat-card-avatar class="Featured-header-image"></div>
+        <mat-card-title>VTTP Presentation</mat-card-title>
+        <mat-card-subtitle>This presentation right here.</mat-card-subtitle>
+      </mat-card-header>
+      <img
+        class="main-card-image"
+        mat-card-image
+        src="https://i.imgur.com/QWP1L.jpeg"
+      />
+      <mat-card-content>
+        <p>
+          Among the existing studies, a group of studies identiﬁes useful
+          networking information, using neural learning, to successfully extract
+          structured information from unstructured textual networking contents.
+          People use networking to post situational updates in various forms
+          such as text messages, images, and videos.
+        </p>
+      </mat-card-content>
+    </mat-card></mat-tab
+  >
+  <mat-tab label="Chat"
+    ><app-chatroombox [chattopic]="chattopic"></app-chatroombox
+  ></mat-tab>
+  <mat-tab label="Maps"
+    ><iframe
+      width="360"
+      height="500"
+      style="border: 0"
+      loading="lazy"
+      allowfullscreen
+      referrerpolicy="no-referrer-when-downgrade"
+      src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCHZB-ym2bNG6j5qN0Ey9BRxbCTvObR2Ow
+    &q=Esplanade,Singapore"
+    >
+    </iframe
+    ><app-googlemap
+      [coordinates]="coordinates"
+      [locationname]="locationname"
+      [locationdescription]="locationdescription"
+    ></app-googlemap
+  ></mat-tab>
+  <mat-tab label="Gallery">
+    <img width="100%" src="https://i.imgur.com/rNSE1oF.jpeg" />
+    <mat-divider></mat-divider>
+    <img width="100%" src="https://i.imgur.com/J1Vx8mc.jpeg" />
+    <mat-divider></mat-divider>
+    <img width="100%" src="https://i.imgur.com/OVfHY.jpeg" />
+  </mat-tab>
+  <mat-tab label="More Info"
+    ><img width="100%" src="https://i.imgur.com/sSqTl3A.jpeg" />
+    <p>
+      How activity boosts energy There are at least four distinct ways that
+      exercise makes you feel more energetic. For starters, when you engage your
+      muscles in any type of exercise, more energy-producing mitochon- dria form
+      in your muscle cells. Mitochondria are the cellular powerhouses that
+      convert glucose and fat into ATP, the molecule that cells use for energy.
+      So while exercise burns energy, it also enables muscle cells to produce
+      more energy. Second, exercise increases your body's oxygen-carrying
+      capacity. Oxygen, along with glu- cose and fat, is essential to fueling
+      cells, which need oxygen both to create ATP and to liberate energy stored
+      as ATP. An increase in oxygen therefore gives you more stamina. Any type
+      of regular exercise creates more capillaries, the tiny blood vessels that
+      ferry oxygen to your cells. But aerobic exercise, by making you breathe
+      the most deeply and increasing your heart rate the most, gets more oxygen
+      circulating. Third, exercise affects levels of various hormones and chemi-
+      cal messengers that can increase
+    </p></mat-tab
+  >
+  <mat-tab label="Latest Episode Discussion"
+    ><app-chatroombox [chattopic]="chattopic"></app-chatroombox
+  ></mat-tab>
+</mat-tab-group>

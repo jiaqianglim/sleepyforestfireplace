@@ -1,12 +1,12 @@
 export interface TopicCard {
-  nametitle: string;
-  categorysubtitle: string;
-  avatarimageurl: string;
-  mainimageurl: string;
+  title: string;
+  subtitle: string;
+  avatarurl: string;
+  imageurl: string;
   description: string;
 }
 export interface Topic {
   name: string;
   category: string;
-  
+
 }
