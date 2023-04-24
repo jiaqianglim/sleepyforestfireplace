@@ -2,6 +2,8 @@ package com.hype.webmvc.model;
 
 import java.util.List;
 
+import org.bson.Document;
+
 public class Topic {
 
     private String name;
@@ -14,6 +16,32 @@ public class Topic {
     private List<_Info> infos;
     private List<_Gallery> gallerys;
     private List<_Chat> chats;
+
+    public Topic fromCard(TopicCard card) {
+        Topic topic = new Topic();
+        topic.setName(card.getTitle());
+        topic.setAvatarurl(card.getAvatarurl());
+        topic.setTitle(card.getTitle());
+        topic.setSubtitle(card.getSubtitle());
+        topic.setImageurl(card.getImageurl());
+        topic.setContent(card.getContent());
+        return topic;
+    }
+
+    public Document toDocument() {
+        Document doc = new Document();
+        doc.append("name", this.name);
+        doc.append("avatarurl", this.avatarurl);
+        doc.append("title", this.title);
+        doc.append("subtitle", this.subtitle);
+        doc.append("imageurl", this.imageurl);
+        doc.append("content", this.content);
+        doc.append("maps", null);
+        doc.append("info", null);
+        doc.append("gallery", null);
+        doc.append("chats", null);
+        return doc;
+    }
 
     public Topic() {
     };
